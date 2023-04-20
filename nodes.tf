@@ -19,7 +19,7 @@ resource "aws_iam_role_policy_attachment" "nodes-AmazonEC2ContainerRegistryReadO
 }
 
 resource "aws_eks_node_group" "private-nodes" {
-  cluster_name    = aws_eks_cluster.demo.name
+  cluster_name    = aws_eks_cluster.bunmi.name
   node_group_name = "private-nodes"
   node_role_arn   = aws_iam_role.nodes.arn
 
@@ -46,7 +46,7 @@ resource "aws_eks_node_group" "private-nodes" {
   }
 
   tags = {
-    "k8s.io/cluster-autoscaler/demo"    = "owned"
+    "k8s.io/cluster-autoscaler/bunmi"    = "owned"
     "k8s.io/cluster-autoscaler/enabled" = true
   }
   depends_on = [
